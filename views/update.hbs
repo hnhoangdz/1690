@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ATN Shop Toys</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <!-- JQuery UI -->
+    <link rel="stylesheet" href="css/jquery-ui.min.css" />
+
+    <!-- Animate -->
+    <!-- <link rel="stylesheet" href="css/animate.css"> -->
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="css/modal.css" />
+
+    <link rel="stylesheet" href="css/style4.css" />
+
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>ATN SHOP TOYS</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        Homepage
+                    </a>
+                </li>
+                <li>
+                    <a href="/add">
+                        <i class="fa fa-briefcase"></i>
+                        Add Toy
+                    </a>
+                    <a href="/view">
+                        <i class="fa fa-files-o"></i>
+                        View all
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-paper-plane"></i>
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+            <div class="container">
+                <div class="card text-center">
+                    <!-- Header -->
+                    <!-- The Modal -->
+                    <div>
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <header class="head-form mb-0">
+                                    <h2 id="header-title">Updating Toy</h2>
+                                </header>
+                                <!-- Modal body -->
+                                <form action="/update" method="post" enctype="multipart/form-data">
+                                    <div class="modal-body">
+                                         <input type="hidden" name="id" value="{{product._id}}">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i
+                                                            class="fa fa-address-book"></i></span>
+                                                </div>
+                                                <input type="text" name="update_name" class="form-control input-sm"
+                                                    value="{{product.name}}" placeholder="Name" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                                </div>
+                                                <input type="text" name="update_amount" class="form-control input-sm"
+                                                    value="{{product.amount}}"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                                </div>
+                                                <select class="form-control input-sm" name="update_category"
+                                                    id="inputGroupSelect01">
+                                                    <option selected disabled>{{product.category}}</option>
+                                                    <option value="Kid">Kid</option>
+                                                    <option value="18+">18+</option>
+                                                    <option value="Older">Older</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                                </div>
+                                                <input type="file" name="update_img" id="img"
+                                                    class="form-control input-sm" value="{{product.img}}"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                                </div>
+                                                <input type="price" name="update_price" id="price"
+                                                    class="form-control input-sm" value="{{product.price}}" />
+                                            </div>
+                                        </div>
+                                        <button type="reset" class="d-none" id="btnReset">reset</button>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer" id="modal-footer">
+                                        <button id="btnUpdate" type="submit" class="btn btn-success">
+                                            Update
+                                        </button>
+                                        <button id="btnClose" type="submit" class="btn btn-danger" data-dismiss="modal">
+                                            Close
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+                    <!-- Bootstrap -->
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="js/popper.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/sweetalert.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script src="js/main.js"></script>
+<script scr="models/Validation.js"></script>
+</body>
+
+</html>
