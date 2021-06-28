@@ -22,8 +22,6 @@ var bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({extended: false}));
 
-
-
 const dbHandler = require('./dbHandler')
 const validation = require('./validation')
 
@@ -147,14 +145,19 @@ app.post('/doAdd',async(req,res)=>{
 
 // Edit
 app.get('/edit',async (req,res)=>{
-    const id = req.query.id;
-    var ObjectID = require('mongodb').ObjectID;
-    const condition = {"_id" : ObjectID(id)};
-    const client= await MongoClient.connect(url);
-    const dbo = client.db("ATNShop");
-    const productToEdit = await dbo.collection("Product").findOne(condition);
-    res.render('update',{product:productToEdit});
-    console.log(productToEdit);
+    if(req.session.username == null){
+        res.render('index');
+    }
+    else{
+        const id = req.query.id;
+        var ObjectID = require('mongodb').ObjectID;
+        const condition = {"_id" : ObjectID(id)};
+        const client= await MongoClient.connect(url);
+        const dbo = client.db("ATNShop");
+        const productToEdit = await dbo.collection("Product").findOne(condition);
+        res.render('update',{product:productToEdit});
+        console.log(productToEdit);
+    }
 })
 
 app.post('/update', async (req, res)=>{
@@ -177,8 +180,13 @@ app.post('/update', async (req, res)=>{
 
 // View all
 app.get('/view',async(req,res)=>{
-    const results = await dbHandler.viewAllProducts("Product");
-    res.render('viewAllProducts',{models:results});
+    if(req.session.username == null){
+        res.render('index');
+    }
+    else{
+        const results = await dbHandler.viewAllProducts("Product");
+        res.render('viewAllProducts',{models:results});
+    }
 })
 
 app.get('/delete' ,async (req, res)=>{
@@ -192,7 +200,12 @@ app.get('/delete' ,async (req, res)=>{
 })
 
 app.get('/add',async(req,res)=>{
-    res.render('addProduct')
+    if(req.session.username == null){
+        res.redirect('index');
+    }
+    else{
+        res.render('addProduct')
+    }
 })
 
 app.use(express.static(__dirname + '/public'))
