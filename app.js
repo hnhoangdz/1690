@@ -178,7 +178,7 @@ app.post('/update', async (req, res)=>{
 // View all
 app.get('/view',async(req,res)=>{
     const results = await dbHandler.viewAllProducts("Product");
-    res.render('viewAllProducts',{models:results,loginName: req.session.username});
+    res.render('viewAllProducts',{models:results});
 })
 
 app.get('/delete' ,async (req, res)=>{
