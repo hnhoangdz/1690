@@ -103,13 +103,8 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                                                 </div>
-                                                <select class="form-control input-sm" name="update_category"
-                                                    id="inputGroupSelect01">
-                                                    <option selected disabled>{{product.category}}</option>
-                                                    <option value="Kid">Kid</option>
-                                                    <option value="18+">18+</option>
-                                                    <option value="Older">Older</option>
-                                                </select>
+                                                <input type="text" name="update_category" class="form-control input-sm"
+                                                    value="{{product.category}}"/>
                                             </div>
                                         </div>
 
@@ -118,8 +113,8 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                                                 </div>
-                                                <input type="file" name="update_img" id="img"
-                                                    class="form-control input-sm" value="{{product.img}}"/>
+                                                <input type="text" name="update_img" class="form-control input-sm"
+                                                    value="{{product.img}}"/>
                                             </div>
                                         </div>
 
