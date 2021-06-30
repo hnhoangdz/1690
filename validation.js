@@ -8,7 +8,9 @@ function checkAlphabet(value){
 }
 
 function checkLength(value,minLength,maxLength){
-    return value.trim().length >= minLength && value.trim().length <=maxLength; 
+    if(value.trim().length < minLength || value.trim().length > maxLength)
+        return false;
+    return true;
 }
 
 function checkPhone(value){

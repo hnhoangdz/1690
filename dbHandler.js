@@ -39,4 +39,11 @@ async function CheckUser(username_login,password_login){
     return results != null;
 }
 
-module.exports = {search,insertOneIntoCollection,viewAllProducts,getDbo,update,CheckUser}
+async function checkAlreadyUser(username_login){
+    const dbo = await getDbo();
+    const result = await dbo.collection("user").
+                    find({username:username_login}).toArray();
+    return result.length == 1;
+}
+
+module.exports = {search,insertOneIntoCollection,viewAllProducts,getDbo,update,CheckUser,checkAlreadyUser}
